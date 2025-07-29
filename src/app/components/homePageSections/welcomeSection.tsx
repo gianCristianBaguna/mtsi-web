@@ -9,7 +9,7 @@ export default function WelcomeSection() {
       <div className="relative z-10 container mx-auto px-4 py-8 lg:py-16">
         {/* Header with logo */}
         <div className="flex justify-between items-start mb-8 lg:mb-12">
-          <div className="flex-1">
+          <div className="flex-1 mt-40">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2">
               Welcome to <span className="text-blue-600">MTSI</span>
             </h1>
@@ -48,8 +48,8 @@ export default function WelcomeSection() {
               </div>
             </div>
 
-            <div className="space-y-4 text-gray-700 text-sm md:text-base leading-relaxed">
-              <p>
+            <div className="space-y-4 text-gray-700  md:text-base leading-relaxed">
+              <p className="text-xl">
                 At MT Solutions Incorporated [MTSI], we are more than just a
                 consulting firm; we are your dedicated partners in achieving
                 excellence. With a commitment to helping individuals and
@@ -58,7 +58,7 @@ export default function WelcomeSection() {
                 tailored to your unique needs.
               </p>
 
-              <p>
+              <p className="text-xl">
                 We promise convenience and security in all your dealings for
                 your peace of mind.
               </p>
