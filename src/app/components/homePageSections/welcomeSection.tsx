@@ -82,7 +82,7 @@ export default function WelcomeSection() {
 
           {/* Right - Image and CEO Info */}
 
-          <div className="relative flex justify-center w-full px-4 overflow-x-hidden">
+          <div className="relative flex justify-center w-full px-2 overflow-x-hidden mt-10">
             <div className=" relative w-[900px] h-[600px] bg-blue-500 [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]">
               <Image
                 src="/img1.jpg"
@@ -110,7 +110,7 @@ export default function WelcomeSection() {
         </div>
 
         {/* Page Indicator */}
-        <span className="absolute bottom-10 left-4 text-blue-600 font-semibold text-lg px-3 py-1">
+        <span className="relative bottom-10 left-0 text-blue-600 font-semibold text-xl px-3 py-1">
           Page 1
         </span>
       </div>
