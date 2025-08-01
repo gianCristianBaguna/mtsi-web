@@ -85,7 +85,7 @@ export default function WelcomeSection() {
           <div className="relative flex justify-center w-full px-4 overflow-x-hidden">
             <div className=" relative w-[900px] h-[600px] bg-blue-500 [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]">
               <Image
-                src="/img2.jpg"
+                src="/img1.jpg"
                 alt="Atty. Mark Aaron B. Tinambunan, CEO of MT Solutions Incorporated"
                 fill
                 className="object-cover object-center"
