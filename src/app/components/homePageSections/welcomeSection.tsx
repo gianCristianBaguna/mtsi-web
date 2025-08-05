@@ -38,7 +38,7 @@ export default function WelcomeSection() {
               </h1>
             </div>
 
-            {/* Decorative Dots */}
+            {/* Decorative \\\ */}
             <div className="flex gap-1 mt-4 sm:mt-6 lg:mt-30 mr-0 lg:mr-10">
               {Array.from({ length: 5 }).map((_, i) => (
                 <motion.div
@@ -79,7 +79,7 @@ export default function WelcomeSection() {
               className="space-y-6"
             >
               {/* Mobile Logo */}
-              <div className="lg:hidden flex items-center justify-center bg-blue-600 text-white p-4 rounded-lg mb-6">
+              <div className="lg:hidden flex items-center justify-center text-white p-4 rounded-lg mb-6">
                 <div className="text-center">
                   <div className="text-lg font-semibold mb-2">
                     MT SOLUTIONS Incorporated
