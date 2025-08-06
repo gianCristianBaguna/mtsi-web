@@ -1,165 +1,154 @@
 "use client";
 
+import Slider from "react-slick";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function WelcomeSection() {
+const slides = [
+  {
+    title: "Multi-Disciplinary Expertise",
+    description:
+      "MTSI delivers integrated solutions across various industries, addressing diverse client needs seamlessly.",
+    image: "/images/slide1.jpg",
+  },
+  {
+    title: "Innovative e-Solutions",
+    description:
+      "We leverage technology to streamline processes, enhance productivity, and adapt to evolving demands.",
+    image: "/images/slide2.jpg",
+  },
+  {
+    title: "Client-Centric Approach",
+    description:
+      "Guided by our P.E.A.C.E. values, we simplify complex processes while ensuring trust, security, and peace of mind.",
+    image: "/images/slide3.jpg",
+  },
+];
+
+export default function VerticalCarousel() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const sliderRef = useRef<Slider | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "0px",
+    vertical: true,
+    verticalSwiping: true,
+    arrows: false,
+    beforeChange: (_: number, next: number) => setActiveSlide(next),
+  };
+
   return (
-    <section className="relative min-h-screen bg-white overflow-hidden">
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative bg-white"
-      >
-        {/* === Background Shapes === */}
-        <div className="absolute inset-0 z-0 pointer-events-none -ml-20">
-          <div className="absolute top-10 right-0 w-1/6 h-10/12 bg-blue-950 hidden lg:block" />
-          <div className="absolute top-0 right-15 w-1/4 h-1/2 bg-blue-500 transform skew-x-12 origin-topright hidden lg:block" />
+    <section className="bg-gradient-to-b from-white to-blue-50 py-20 px-4 lg:px-12">
+      <h2 className="text-4xl font-extrabold text-center mb-10 text-gray-900">
+        What Makes Us <span className="text-blue-700">Different?</span>
+      </h2>
+
+      <div className="relative max-w-6xl mx-auto flex gap-10 items-start">
+        {/* Animated External Image Preview */}
+        <div className="w-1/2 relative h-[500px] rounded-xl overflow-hidden shadow-xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slides[activeSlide].image}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={slides[activeSlide].image}
+                alt={slides[activeSlide].title}
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
-        <div className="absolute top-4 right-0 w-1/8 h-3/4 bg-blue-950 hidden lg:block xl:hidden" />
-        <div className="absolute top-0 right-8 w-1/5 h-2/5 bg-blue-500 transform skew-x-12 origin-top-right hidden lg:block xl:hidden" />
-        <div className="lg:hidden absolute top-5 right-0 w-20 h-32 bg-blue-600 transform skew-x-12" />
-        <div className="lg-hidden absolute top-10 h-32 bg-blue-950 hidden lg:block" />
 
-        {/* === Content Container === */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 xl:py-16 space-y-8">
-          {/* === Header Section === */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex flex-col lg:flex-row justify-between items-start"
-          >
-            <div className="flex-1 w-full lg:w-auto">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-900 mb-4 mt-4 sm:mt-8 lg:mt-16 xl:mt-20">
-                Welcome to <span className="text-blue-500">MTSI</span>
-              </h1>
-            </div>
-
-            {/* Decorative \\\ */}
-            <div className="flex gap-1 mt-4 sm:mt-6 lg:mt-30 mr-0 lg:mr-10">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: i * 0.1, duration: 0.3 }}
-                  viewport={{ once: true }}
-                  className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-blue-600 diagonal-bar"
-                />
-              ))}
-            </div>
-
-            {/* Logo Desktop */}
-            <motion.div
-              initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="hidden lg:flex flex-col items-center text-white p-4 rounded-lg ml-10"
-            >
-              <div className="text-4xl font-semibold text-center mb-2 mr-2">
-                MT SOLUTIONS
-                <br />
-                Incorporated
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* === Grid Section === */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* === Left Column === */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              {/* Mobile Logo */}
-              <div className="lg:hidden flex items-center justify-center text-white p-4 rounded-lg mb-6">
-                <div className="text-center">
-                  <div className="text-lg font-semibold mb-2">
-                    MT SOLUTIONS Incorporated
-                  </div>
-                  <div className="w-10 h-10 bg-white rounded border-2 border-white flex items-center justify-center mx-auto">
-                    <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-xs">M</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Text Block */}
-              <div className="text-xl space-y-4 text-blue-950 text-justify leading-relaxed">
-                <p>
-                  At MT Solutions Incorporated [MTSI], we are more than just a
-                  consulting firm; we are your dedicated partners in achieving
-                  excellence. With a commitment to helping individuals and
-                  organizations navigate their most pressing challenges, we
-                  offer strategic insights, innovative solutions, and practical
-                  guidance tailored to your unique needs.
-                </p>
-                <p>
-                  We promise convenience and security in all your dealings for
-                  your peace of mind.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* === Right Column - Image === */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative flex justify-center w-full px-2 overflow-x-hidden mt-10"
-            >
-              <div className="relative w-[900px] h-[600px] bg-blue-500 [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]">
-                <Image
-                  src="/img1.jpg"
-                  alt="Atty. Mark Aaron B. Tinambunan, CEO of MT Solutions Incorporated"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 900px"
-                />
-              </div>
-            </motion.div>
+        {/* Slider with Progress Bar and Dots */}
+        <div className="relative w-1/2 h-[500px]">
+          {/* Progress bar */}
+          <div className="absolute left-0 top-0 h-full w-1 bg-gray-200 z-10">
+            <div
+              className="bg-blue-600 w-1 transition-all duration-500"
+              style={{
+                height: `${((activeSlide + 1) / slides.length) * 100}%`,
+              }}
+            />
           </div>
 
-          {/* === CEO Label === */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            viewport={{ once: true }}
-            className="absolute left-1/2 transform -translate-x-1/2 bottom-1/3 lg:bottom-1/3 sm:bottom-4 sm:left-1/2 sm:transform sm:-translate-x-1/2 w-full px-4"
-          >
-            <div className="bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg -skew-x-6 text-center max-w-md mx-auto">
-              <div className="transform skew-x-6">
-                <div className="font-bold text-sm sm:text-lg md:text-lg lg:text-xl">
-                  Atty. Mark Aaron B. Tinambunan
-                </div>
-                <div className="text-xs sm:text-sm md:text-base opacity-90">
-                  CEO of MT Solutions Incorporated
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          {/* Dot indicators */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-2 pr-2 z-10">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveSlide(idx);
+                  sliderRef.current?.slickGoTo(idx);
+                }}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  idx === activeSlide
+                    ? "bg-blue-700 scale-110"
+                    : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
 
-          {/* === Page Indicator === */}
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="relative bottom-10 left-0 text-blue-600 font-semibold text-xl px-3 py-1 block"
-          >
-            Page 1
-          </motion.span>
+          {/* Vertical Slider */}
+          <Slider ref={sliderRef} {...settings}>
+            {slides.map((slide, index) => (
+              <div key={index} className="px-2">
+                <motion.div
+                  onClick={() => {
+                    setActiveSlide(index);
+                    sliderRef.current?.slickGoTo(index);
+                  }}
+                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className={`cursor-pointer w-[90%] mx-auto max-w-md flex items-center gap-4 rounded-lg p-4 transition-all duration-500 shadow-lg ${
+                    index === activeSlide
+                      ? "scale-100 opacity-100 bg-white ring-4 ring-blue-500/30"
+                      : "scale-90 opacity-40 blur-sm"
+                  }`}
+                >
+                  <div className="relative w-24 h-24 flex-shrink-0 rounded overflow-hidden">
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-blue-900 mb-1">
+                      {slide.title}
+                    </h3>
+                    <p className="text-gray-700 text-sm">
+                      {slide.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </Slider>
         </div>
-      </motion.section>
+      </div>
     </section>
   );
 }

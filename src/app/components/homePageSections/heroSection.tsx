@@ -1,177 +1,199 @@
 "use client";
 
 import Image from "next/image";
-import { Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-export default function HeroSection() {
+const features = [
+  {
+    title: "Tailored & Cost-Effective Solutions",
+    description:
+      "We craft personalized solutions tailored to unique client needs, while ensuring scalability and value without compromising quality.",
+    detailImage: "/next.svg",
+  },
+  {
+    title: "Innovative e-Solutions",
+    description:
+      "We leverage technology to streamline processes, boost productivity, and adapt to evolving demands with efficiency and security.",
+    detailImage: "/next.svg",
+  },
+  {
+    title: "Versatile Expertise",
+    description:
+      "Our multidisciplinary team delivers integrated solutions across industries, tackling diverse challenges with seamless innovation.",
+    detailImage: "/next.svg",
+  },
+  {
+    title: "Client-Centric Approach",
+    description:
+      "Rooted in our P.E.A.C.E. values, we simplify complex processes while building trust, security, and peace of mind with every solution.",
+    detailImage: "/next.svg",
+  },
+];
+
+export default function HeroPeaceSection() {
+ const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const handleCardClick = (index: number) => {
+    setActiveIndex(index);
+    const nextSection = document.getElementById("feature-section");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const layers = Array.from({ length: 50 }, (_, i) => {
+    const factor = i / 50;
+    const offset = i * 40;
+
+    return {
+      tx: -1800 + i * 150,
+      ty: 60 - i * 1.2,
+      scale: 2.8 - i * 0.03,
+      skew: 30 - i * 0.6,
+      // HSL: hue=210 for blue, lightness increases with each layer
+      color: `hsl(210, 100%, ${20 + factor * 50}%)`,
+      d: `
+      M0,${300 + offset}
+      C150,${250 + offset} 350,${350 + offset} 500,${300 + offset}
+      C650,${250 + offset} 850,${350 + offset} 1000,${300 + offset}
+      L1000,500 L0,500 Z
+    `,
+    };
+  });
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative bg-white"
-    >
-      {/* Background Accents */}
-      <div className="absolute inset-0 z-0 pointer-events-none -ml-20">
-        <div className="absolute top-0 left-0 w-[49.5%] h-16 bg-blue-600 -skew-x-12 z-10 -mr-20" />
-        <div className="absolute top-0 left-0 w-[49.5%] h-11 bg-blue-700 -skew-x-12 z-10 -mr-20" />
-        <div className="absolute top-0 left-1/2 w-1/6 h-16 bg-black -skew-x-12 z-10 shadow-2xl" />
-        <div className="absolute top-0 left-[46%] w-14 h-16 bg-blue-700 -skew-x-12 z-10" />
-      </div>
-
-      {/* === Desktop View === */}
-      <div className="hidden sm:block relative z-10">
-        {/* Tagline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="absolute top-28 z-20 flex items-center space-x-4 right-[15%]"
+    <>
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative min-h-screen py-32 px-6 overflow-hidden"
+      >
+        <svg
+          viewBox="0 0 1000 500"
+          preserveAspectRatio="xMidYMid slice"
+          className="absolute top-0 left-0 w-full h-full"
         >
-          <div className="flex gap-1">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="w-4 h-4 bg-blue-600 diagonal-bar" />
-            ))}
-          </div>
-          <p className="text-blue-600 font-semibold text-xl italic">
-            Your Smart Solutions Provider
-          </p>
-        </motion.div>
+          {layers.map((layer, index) => (
+            <motion.g
+              key={index}
+              initial={false}
+              animate={{
+                transform: `
+                translate(${layer.tx}px, ${layer.ty}px)
+                scale(${layer.scale})
+                skewX(${layer.skew}deg)
+              `,
+              }}
+            >
+              <path d={layer.d} fill={layer.color} opacity={0.3} />
+            </motion.g>
+          ))}
+        </svg>
 
         {/* Main Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="max-w-7xl mx-auto px-6 lg:px-8 py-32 flex items-center min-h-screen"
+        <div className="relative z-10 max-w-6xl mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <Image
+            src="/personImg.png"
+            alt="Person"
+            width={1400}
+            height={1400}
+            aria-hidden="true"
+            draggable="false"
+            className="hidden lg:block absolute right-[-10%] top-[-20%] w-[45vw] max-w-[1000px] opacity-95 z-0 pointer-events-none drop-shadow-[8px_8px_15px_rgba(0,0,0,0.7)]
+"
+          />
+
+          <div className="w-full lg:w-4/6 space-y-4 pb-40 ">
+            <p className="text-blue-800 font-semibold text-sm">
+              Your Smart Solutions Provider
+            </p>
+            <h1 className="text-3xl sm:text-6xl font-bold leading-tight text-gray-900">
+              Discover our smart vision through P.E.A.C.E.
+            </h1>
+            <p className="text-base text-white italic leading-tight">
+              We promise convenience and security <br /> in all your dealings
+              for your peace of mind.
+            </p>
+            <a
+              href="#"
+              className="inline-block mt-5 px-5 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition text-sm font-medium"
+            >
+              Learn more
+            </a>
+          </div>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="absolute bottom-0 w-full z-10 px-4 pb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            {features.map((f, i) => (
+              <div
+                key={i}
+                onClick={() => handleCardClick(i)}
+                className={`cursor-pointer rounded-lg p-5 shadow-md transform transition-all duration-300 ${
+                  activeIndex === i
+                    ? "scale-105 ring-2 ring-blue-600 bg-blue-700 text-white border-blue-600"
+                    : "scale-100 bg-white text-gray-800 border-blue-600"
+                } border-t-4`}
+              >
+                <h3 className="font-bold text-base mb-2">{f.title}</h3>
+                <p className="text-sm">{f.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Feature Detail Section */}
+      {activeIndex !== null && (
+        <section
+          id="feature-section"
+          className="relative bg-white py-32 px-4 md:px-6 transition-all duration-500"
         >
-          <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
-            {/* Left Side */}
-            <div className="space-y-12 -ml-30 -mt-1">
-              <h1 className="text-6xl sm:text-6xl lg:text-7xl font-extrabold leading-tight">
-                <span className="text-black">MT SOLUTIONS</span>
-                <br />
-                <span className="text-blue-600">INCORPORATED</span>
-              </h1>
-
-              <div className="relative bg-blue-700 text-white px-6 py-8 sm:px-10 sm:py-12 rounded-lg shadow-2xl transform -skew-x-6 w-4xl -ml-20 z-30">
-                <div className="transform skew-x-6 text-center">
-                  <p className="text-3xl sm:text-4xl font-medium italic">
-                    Discover our smart solutions and future vision through P.E.A.C.E.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white p-5 sm:p-6 rounded-lg shadow-md border-l-4 border-blue-600 max-w-lg w-full mx-auto">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900 text-lg">Contact Us:</p>
-                    <p className="text-blue-600 font-semibold text-lg">
-                      <a
-                        href="https://wisdomoustech.com"
-                        className="transition-all duration-300 ease-in-out hover:text-blue-800 hover:underline"
-                      >
-                        info@themtsolutions.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-1 ml-[20%]">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <div key={i} className="w-4 h-4 bg-blue-600 diagonal-bar" />
-                ))}
-              </div>
+          <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+            {/* Left Abstract Image */}
+            <div className="hidden md:flex justify-center relative h-[300px]">
+              <Image
+                src="/img2.jpg"
+                alt="Abstract Left"
+                fill
+                className="object-contain opacity-80"
+              />
             </div>
 
-            {/* Right Side - Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="w-[120%] mx-auto mt-10 lg:mt-0 z-1"
-            >
-              <div className="rounded-lg shadow-2xl overflow-hidden transform rotate-2 transition-transform duration-500">
+            {/* Center Text + Image */}
+            <div className="col-span-1 text-center space-y-6">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-snug">
+                {features[activeIndex].title}
+              </h2>
+              <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-lg mx-auto">
+                {features[activeIndex].description}
+              </p>
+              <div className="w-full max-w-xl mx-auto rounded-xl overflow-hidden shadow-xl">
                 <Image
-                  src="/img2.jpg"
-                  alt="Business team meeting"
-                  width={1200}
-                  height={700}
-                  className="w-full h-auto object-cover"
+                  src={features[activeIndex].detailImage}
+                  alt={`${features[activeIndex].title} detail`}
+                  width={800}
+                  height={450}
+                  className="object-cover"
                 />
               </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* === Mobile View === */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="block sm:hidden relative z-10 px-4 py-8 space-y-8"
-      >
-        <div className="absolute items-center justify-between -top-2 right-0">
-          <div className="flex items-center space-x-2">
-            <div>
-              <div className="text-xs font-extrabold text-gray-900 italic">MT SOLUTIONS</div>
-              <div className="text-xs text-gray-700 italic">Incorporated</div>
             </div>
-            <div className="w-8 h-8 bg-gray-900 flex items-center justify-center rotate-45">
-              <div className="text-white font-bold text-sm -rotate-45">M</div>
+
+            {/* Right Abstract Image */}
+            <div className="hidden md:flex justify-center relative h-[300px]">
+              <Image
+                src="/img1.jpg"
+                alt="Abstract Right"
+                fill
+                className="object-contain opacity-80"
+              />
             </div>
           </div>
-        </div>
-
-        <h1 className="text-4xl font-extrabold leading-tight">
-          <span className="text-black">Company</span>
-          <br />
-          <span className="text-blue-600">Profile</span>
-        </h1>
-
-        <p className="text-blue-600 font-semibold text-lg italic">
-          Your Smart Solutions Provider
-        </p>
-
-        <div className="bg-blue-700 text-white p-6 rounded-lg shadow-lg transform -skew-x-6">
-          <div className="transform skew-x-6 text-center text-lg italic">
-            Discover our smart solutions and future vision through P.E.A.C.E.
-          </div>
-        </div>
-
-        <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-600 flex items-center space-x-4">
-          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-            <Mail className="w-5 h-5 text-white" />
-          </div>
-          <div>
-            <p className="font-bold text-gray-900">Contact Us:</p>
-            <p className="text-blue-600 font-semibold">
-              <a
-                href="https://wisdomoustech.com"
-                className="transition-all duration-300 ease-in-out hover:text-blue-800 hover:underline"
-              >
-                info@themtsolutions.com
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <div className="overflow-hidden rounded-lg shadow-xl">
-          <Image
-            src="/img2.jpg"
-            alt="Business meeting"
-            width={600}
-            height={350}
-            className="w-full h-auto object-cover"
-          />
-        </div>
-      </motion.div>
-    </motion.section>
+        </section>
+      )}
+    </>
   );
 }

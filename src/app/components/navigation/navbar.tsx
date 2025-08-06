@@ -36,7 +36,7 @@ export default function Navbar() {
             <Link href="#services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               Services
             </Link>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white">Contact Us</button>
+            <button className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full text-white">Contact Us</button>
           </div>
 
           {/* Mobile menu button */}
@@ -80,7 +80,7 @@ export default function Navbar() {
                 Services
               </Link>
               <div className="px-3 py-2">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white =">Contact Us</button>
+                <button className="w-full bg-blue-600 hover:bg-blue-700  text-white =">Contact Us</button>
               </div>
             </div>
           </div>
