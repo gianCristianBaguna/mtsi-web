@@ -4,13 +4,13 @@ module.exports = {
   safelist: [
     "bg-blue-500",
     "bg-green-500",
-    "bg-yellow-500",
-    "bg-red-500",
+    "bg-purple-500",
+    "bg-pink-500",
     "text-white",
     "border-blue-500",
     "border-green-500",
-    "border-yellow-500",
-    "border-red-500",
+    "border-purple-500",
+    "border-pink-500",
   ],
   theme: {
     extend: {
