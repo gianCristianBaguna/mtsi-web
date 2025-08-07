@@ -46,7 +46,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="mt-10 border-t border-blue-700 pt-6 text-center text-xs text-blue-300">
-        &copy; {new Date().getFullYear()} MTSI. All rights reserved.
+        &copy; {new Date().getFullYear()} Wisdomoustech. All rights reserved.
       </div>
     </footer>
   );
