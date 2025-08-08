@@ -58,7 +58,7 @@ export default function VerticalCarousel() {
 
   return (
     <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4 sm:px-6 lg:px-12">
-      <h2 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-center mb-10 text-gray-900">
+      <h2 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-center -mt-10 mb-10 text-gray-900">
         How We Deliver <span className="text-blue-700">Excellence</span>
       </h2>
 

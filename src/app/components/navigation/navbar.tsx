@@ -35,7 +35,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link
-              href="#welcome"
+              href="/"
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Home
@@ -44,19 +44,13 @@ export default function Navbar() {
               href="#solutions"
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
-              Solutions
-            </Link>
-            <Link
-              href="#profile"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-            >
-              Company Profile
-            </Link>
-            <Link
-              href="#services"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-            >
               Services
+            </Link>
+            <Link
+              href="/pages/aboutpage"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              About Us
             </Link>
             <button className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full text-white">
               Contact Us
