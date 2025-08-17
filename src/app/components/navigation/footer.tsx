@@ -1,4 +1,5 @@
 "use client";
+import { Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -23,11 +24,6 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#services" className="hover:underline text-blue-200">
-                Services
-              </a>
-            </li>
-            <li>
               <a href="#contact" className="hover:underline text-blue-200">
                 Contact
               </a>
@@ -38,9 +34,20 @@ export default function Footer() {
         {/* Contact */}
         <div>
           <h4 className="text-xl font-bold mb-3">Contact</h4>
-          <p className="text-sm">📍 1234 Tech St., Innovation City</p>
-          <p className="text-sm">📞 (123) 456-7890</p>
-          <p className="text-sm">✉️ info@mtsi.com</p>
+          <p className="text-sm">📍 Bagumbayan, Tigbauan, Iloilo</p>
+          <p className="text-sm">📞 +63 917 142 2937</p>
+          <p className="text-sm">✉️ info@themtsolutions.com</p>
+          <p className="text-sm flex items-center gap-2">
+            <Facebook className="w-4 h-4 text-white" />
+            <a
+              href="https://www.facebook.com/mtsolutionsincorporated"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white"
+            >
+              themtsolutionsincorporated
+            </a>
+          </p>
         </div>
       </div>
 

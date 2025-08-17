@@ -10,26 +10,24 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm border-b sticky top-0 z-50 border-1 border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-3 px-5 py-5">
-            {/* Icon Image */}
-            
+        <div className="flex justify-between items-center h-20">
+          {/* Logo + Brand */}
+          <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <img
-                src="/mtsilogo.png" // 🔁 Replace with your actual image path
+                src="/mtsilogo.png"
                 alt="MT Logo"
-                className="w-20 h-20 object-contain mt-3"
+                className="w-24 h-24 object-contain mt-3"
               />
-
-            {/* Brand Text */}
-            <div className="flex flex-col">
-              <span className="font-bold text-gray-900 text-sm leading-tight">
-                MT SOLUTIONS
-              </span>
-              <span className="text-xs text-gray-600 leading-tight">
-                Incorporated
-              </span>
-            </div>
+              <div className="flex flex-col leading-tight">
+                <span className="font-bold text-gray-900 text-base">
+                  MT SOLUTIONS
+                </span>
+                <span className="text-xs text-gray-600">
+                  Incorporated
+                </span>
+              </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -41,18 +39,12 @@ export default function Navbar() {
               Home
             </Link>
             <Link
-              href="#solutions"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-            >
-              Services
-            </Link>
-            <Link
               href="/pages/aboutpage"
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               About Us
             </Link>
-            <button className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full text-white">
+            <button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-white font-medium shadow">
               Contact Us
             </button>
           </div>
@@ -102,7 +94,7 @@ export default function Navbar() {
                 Services
               </Link>
               <div className="px-3 py-2">
-                <button className="w-full bg-blue-600 hover:bg-blue-700  text-white =">
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-medium shadow">
                   Contact Us
                 </button>
               </div>
