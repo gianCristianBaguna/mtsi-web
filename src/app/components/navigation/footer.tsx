@@ -37,7 +37,7 @@ export default function Footer() {
           <p className="text-sm">📍 Bagumbayan, Tigbauan, Iloilo</p>
           <p className="text-sm">📞 +63 917 142 2937</p>
           <p className="text-sm">✉️ info@themtsolutions.com</p>
-          <p className="text-sm flex items-center gap-2">
+          <p className="text-sm flex gap-2 lg:ml-0 ml-20">
             <Facebook className="w-4 h-4 text-white" />
             <a
               href="https://www.facebook.com/mtsolutionsincorporated"

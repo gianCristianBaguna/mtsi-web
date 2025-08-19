@@ -23,9 +23,7 @@ export default function Navbar() {
                 <span className="font-bold text-gray-900 text-base">
                   MT SOLUTIONS
                 </span>
-                <span className="text-xs text-gray-600">
-                  Incorporated
-                </span>
+                <span className="text-xs text-gray-600">Incorporated</span>
               </div>
             </Link>
           </div>
@@ -66,32 +64,17 @@ export default function Navbar() {
           <div className="md:hidden border-t bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
-                href="#welcome"
+                href="/"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
-                href="#solutions"
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                href="/pages/aboutpage"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
               >
-                Solutions
-              </Link>
-              <Link
-                href="#profile"
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Company Profile
-              </Link>
-              <Link
-                href="#services"
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Services
+                About Us
               </Link>
               <div className="px-3 py-2">
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-medium shadow">
